@@ -7,7 +7,6 @@ import random
 import string
 from datetime import datetime
 from pygments.lexers import guess_lexer
-import json
 
 app = FastAPI()
 
