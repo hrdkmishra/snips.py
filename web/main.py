@@ -7,6 +7,7 @@ import random
 import string
 from datetime import datetime
 from pygments.lexers import guess_lexer
+import json
 
 app = FastAPI()
 
@@ -86,8 +87,17 @@ async def upload_file(request: Request, file: UploadFile):
         conn.close()
 
         os.remove(file_path)
+        
+        response_data = {
+            "message": "File uploaded successfully",
+            "file id": file_id,
+            "file size": file_size,
+            "file lang": file_lang,
+            "url": f"http://127.0.0.1:8000/f/{file_id}"  # Corrected line
+        }
 
-        return JSONResponse(content={"message": "File uploaded successfully", "file id": file_id ,"file size": file_size, "file lang": file_lang}, status_code=200)
+        return JSONResponse(content=response_data, status_code=200)
+        
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
     
