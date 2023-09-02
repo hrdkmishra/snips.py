@@ -1,8 +1,6 @@
 # Use the official Python Alpine image as the base image
 FROM python:alpine3.18
 
-# create a root user 
-
 # Expose port 8000 for FastAPI
 EXPOSE 8000
 
@@ -17,7 +15,6 @@ RUN python -m venv venv && \
     source venv/bin/activate && \
     pip install --no-cache-dir -r requirements.txt
 
-# Change the working directory to the web directory
 
 # Start the FastAPI application using UVicorn within the virtual environment
-CMD ["sh", "-c", "source venv/bin/activate && cd web/ && uvicorn main:app --host 127.0.0.1 --port 8000"]
+CMD ["sh", "-c", "source venv/bin/activate && cd web/ && uvicorn main:app --host 0.0.0.0 --port 8000"]
