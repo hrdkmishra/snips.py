@@ -37,12 +37,11 @@ Once the Docker image is built, you can create and run a Docker container with t
 
 ### Access the FastAPI Application
 You can access the FastAPI application in your web browser using the following URL:
-
-`http://localhost:8000`
+```http://127.0.0.1:8000```
 
 ### Send a File via curl
 To send a file to the FastAPI application using curl, you can use the following command:
 
-`curl -X POST -F "file=@<path_to_file>" http://localhost:8000/upload/`
+`curl -X POST -F "file=@<path_to_file>" http://127.0.0.1:8000/upload/`
 
 Replace `<path_to_file>` with the actual path to the file you want to upload.
