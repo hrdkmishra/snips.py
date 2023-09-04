@@ -1,6 +1,6 @@
 # snips.py
 
-![image](images\2023-09-04_16-50.png)
+![image](images/2023-09-04_16-50.png)
 
 This repository is a FastAPI application that is Dockerized for easy deployment and hosting. The application allows you to upload file from your terminal to share your code just like a pastebin without using pastebin :p
 
