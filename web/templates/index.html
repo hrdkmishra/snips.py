@@ -2,8 +2,106 @@
 <html>
 <head>
     <title>File Content</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            padding: 0;
+            color-scheme: dark;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        .stripes {
+            display: block;
+            width: 100%;
+            height: 1rem;
+            background-image: repeating-linear-gradient(-45deg, #0ac5b2 0 2px, transparent 2px 8px);
+        }
+        .header {
+            /* background-color: #0ac5b2;    */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 90vh;
+            padding: 1rem;
+        }
+        .code-container {
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* rgba(11,197,179,0.3); */
+            overflow: hidden;
+            padding: 0px;
+            /* min-height: 90vh; */
+        }
+        .linenos {
+            /* color: white; */
+            padding-right: 1rem ;
+            text-align: center;
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+        .highlight {
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .file-header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #454545;
+            border-radius: 0.5rem;
+            margin: 0 auto;
+            width: 80%;
+            background-color: #0f1014;
+            padding: 1rem;
+        }
+        .file-details {
+            flex-grow: 1;
+        }
+
+        .file-header-link {
+            margin-left: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <pre>{{ file_content }}</pre>
+    <div class="stripes"></div>
+    <div class="header">
+        snips.py
+    </div>
+    <div class="file-header">
+        <div class="file-details">
+            file: <a href="#">{{ file_id }}</a> ({{file_lang}}) · {{ file_size }} · {{ create_datetime }}
+        </div>
+        <a class="file-header-link" id="to-top" href="#" aria-label="go to top" data-hide="">↑ top</a>
+        <a class="file-header-link" href="?r=1" aria-label="view raw file">view raw</a>
+    </div>
+    <div class="container">
+        <div class="code-container">
+            <table>
+                <tr>
+                    <td class="linenos">
+                        {{ file_content_line_numbers | safe }}
+                    </td>
+                    <td class="highlight">
+                        {{ file_content | safe }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
